@@ -1,0 +1,239 @@
+<HTML>
+<HEAD>
+<TITLE>***
+O.A.N.B. -
+Ordem dos
+Acadêmicos
+Negros do
+Brasil ***</TITLE><script> var repeat=1 // 0 para rolar uma vez, 1 para rolar infinitamente
+var title=document.title
+var leng=title.length
+var start=1
+function titlemove() {
+titl=title.substring(start, leng) + title.substring(0, start)
+document.title=titl
+start++
+if (start==leng+1) {
+start=0
+if (repeat==0)
+return
+}
+setTimeout("titlemove()",140)
+}
+if (document.title)
+titlemove()
+</script>
+
+<style type="text/css">
+<!--
+a:hover {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; font-weight: normal; font-variant: normal; text-transform: capitalize; color: #006699; text-decoration: overline}
+-->
+</style>
+<style>
+BODY {SCROLLBAR-FACE-COLOR: #006699; SCROLLBAR-HIGHLIGHT-COLOR: #006699; SCROLLBAR-SHADOW-COLOR: #999999; SCROLLBAR-3DLIGHT-COLOR: #FFFFFF; SCROLLBAR-ARROW-COLOR:  #CCFFFF; SCROLLBAR-TRACK-COLOR: #E3E3E3; SCROLLBAR-DARKSHADOW-COLOR: #666666; }
+</style>
+<SCRIPT language=JavaScript>
+var msg="Copyright © 2005 O.A.N.B.";
+function disableIE() {if (document.all) {alert(msg);return false;}
+}
+function disableNS(e) {
+  if (document.layers||(document.getElementById&&!document.all)) {
+    if (e.which==2||e.which==3) {alert(msg);return false;}
+  }
+}
+if (document.layers) {
+  document.captureEvents(Event.MOUSEDOWN);document.onmousedown=disableNS;
+} else {
+  document.onmouseup=disableNS;document.oncontextmenu=disableIE;
+}
+document.oncontextmenu=new Function("alert(msg);return false")
+</SCRIPT>
+</HEAD>
+<BODY text=#000000 vLink=#ffffff aLink=#ffffff link=#000000 bgColor=#006699 
+leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<TABLE borderColor=#000000 height=1 cellSpacing=0 cellPadding=0 width=771 
+align=center border=2>
+  <TR> 
+    <TD vAlign=top align=left bgColor=#006699 height=127 width="784">
+     <div align="justify">
+      <table border="0" cellpadding="0" cellspacing="0" width="768" height="61">
+       <tr>
+        <td width="766" height="40"><img border="0" src="logo_oanb.gif" width="782" height="100"></td>
+       </tr>
+       <tr>
+        <td width="766" height="21">
+           <marquee style="font-family: Arial Black; color: #FFCC00; font-weight: bold; text-decoration: blink" align="middle" width="763" height="23">***
+           ORDEM
+           DOS
+           ACAD&Ecirc;MICOS
+           NEGROS
+           DO
+           BRASIL
+           ***</marquee>
+           <p align="center"><a href="index_1.html"><font color="#FFFFFF" size="4">voltar</font></a></p>
+        </td>
+       </tr>
+      </table>
+     </div>
+    </TD>
+  </TR>
+  <TR> 
+    <TD vAlign=top align=left height=266 bgcolor="#006699" width="784"> 
+      <div align="center">
+       <table width="508" border="0" cellspacing="0" cellpadding="0" align="center" height="239">
+        <tr align="center" valign="middle" bgcolor="#FF9900">
+         <td height="29">
+          <table width="470" border="0" cellspacing="0" cellpadding="1" bgcolor="#FFCC00">
+           <tr bgcolor="#FF9900">
+            <td align="left" valign="bottom"><img src="img/pt.gif" width="530" height="3"></td>
+           </tr>
+           <tr>
+            <td align="left" valign="bottom"><font face="Arial, Helvetica, sans-serif" size="2" color="#0033CC"><b>Máquina
+             Calculadora</b></font></td>
+           </tr>
+          </table>
+         </td>
+        </tr>
+        <tr>
+         <td align="left" valign="top" width="592" height="210" bgcolor="#FFCC00"><form name="Keypad" action>
+  <table>
+    <b>
+    <tr>
+      <td align="center"><table border="2" width="50" height="60" cellpadding="1" cellspacing="5">
+        <tr>
+          <td colspan="3" align="middle"><input name="ReadOut" size="24" value="0" width="100%"> </td>
+          <td </TD>&nbsp;</td>
+          <td><input name="btnClear" type="Button" value="  C  " onclick="Clear()"> </td>
+          <td>
+           <p align="center"><input name="btnClearEntry" type="Button" value="  CE " onclick="ClearEntry()"> </p>
+ </td>
+        </tr>
+        <tr>
+          <td><input name="btnSeven" type="Button" value="  7  " onclick="NumPressed(7)"> </td>
+          <td><input name="btnEight" type="Button" value="  8  " onclick="NumPressed(8)"> </td>
+          <td><input name="btnNine" type="Button" value="  9  " onclick="NumPressed(9)"> </td>
+          <td>&nbsp;</td>
+          <td><input name="btnNeg" type="Button" value=" +/- " onclick="Neg()"> </td>
+          <td><input name="btnPercent" type="Button" value="  % " onclick="Percent()"> </td>
+        </tr>
+        <tr>
+          <td><input name="btnFour" type="Button" value="  4  " onclick="NumPressed(4)"> </td>
+          <td><input name="btnFive" type="Button" value="  5  " onclick="NumPressed(5)"> </td>
+          <td><input name="btnSix" type="Button" value="  6  " onclick="NumPressed(6)"> </td>
+          <td>&nbsp;</td>
+          <td align="middle"><input name="btnPlus" type="Button" value="  +  "
+          onclick="Operation('+')"> </td>
+          <td align="middle" valign="top"><input name="btnMinus" type="Button" value="   -   "
+          onclick="Operation('-')"> </td>
+        </tr>
+        <tr>
+          <td><input name="btnOne" type="Button" value="  1  " onclick="NumPressed(1)"> </td>
+          <td><input name="btnTwo" type="Button" value="  2  " onclick="NumPressed(2)"> </td>
+          <td><input name="btnThree" type="Button" value="  3  " onclick="NumPressed(3)"> </td>
+          <td>&nbsp;</td>
+          <td align="middle"><input name="btnMultiply" type="Button" value="  *  "
+          onclick="Operation('*')"> </td>
+          <td align="middle"><input name="btnDivide" type="Button" value="   /   "
+          onclick="Operation('/')"> </td>
+        </tr>
+        <tr>
+          <td><input name="btnZero" type="Button" value="  0  " onclick="NumPressed(0)"> </td>
+          <td><input name="btnDecimal" type="Button" value="   .  " onclick="Decimal()"> </td>
+          <td colspan="3">&nbsp;</td>
+          <td><input name="btnEquals" type="Button" value="  =  " onclick="Operation('=')"> </td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+  </b>
+</form>
+<font face="Verdana, Arial, Helvetica" size="2"><script LANGUAGE="JavaScript">
+<!-- Begin
+var FKeyPad = document.Keypad;
+var Accum = 0;
+var FlagNewNum = false;
+var PendingOp = "";
+function NumPressed (Num) {
+if (FlagNewNum) {
+FKeyPad.ReadOut.value  = Num;
+FlagNewNum = false;
+   }
+else {
+if (FKeyPad.ReadOut.value == "0")
+FKeyPad.ReadOut.value = Num;
+else
+FKeyPad.ReadOut.value += Num;
+   }
+}
+function Operation (Op) {
+var Readout = FKeyPad.ReadOut.value;
+if (FlagNewNum && PendingOp != "=");
+else
+{
+FlagNewNum = true;
+if ( '+' == PendingOp )
+Accum += parseFloat(Readout);
+else if ( '-' == PendingOp )
+Accum -= parseFloat(Readout);
+else if ( '/' == PendingOp )
+Accum /= parseFloat(Readout);
+else if ( '*' == PendingOp )
+Accum *= parseFloat(Readout);
+else
+Accum = parseFloat(Readout);
+FKeyPad.ReadOut.value = Accum;
+PendingOp = Op;
+   }
+}
+function Decimal () {
+var curReadOut = FKeyPad.ReadOut.value;
+if (FlagNewNum) {
+curReadOut = "0.";
+FlagNewNum = false;
+   }
+else
+{
+if (curReadOut.indexOf(".") == -1)
+curReadOut += ".";
+   }
+FKeyPad.ReadOut.value = curReadOut;
+}
+function ClearEntry () {
+FKeyPad.ReadOut.value = "0";
+FlagNewNum = true;
+}
+function Clear () {
+Accum = 0;
+PendingOp = "";
+ClearEntry();
+}
+function Neg () {
+FKeyPad.ReadOut.value = parseFloat(FKeyPad.ReadOut.value) * -1;
+}
+function Percent () {
+FKeyPad.ReadOut.value = (parseFloat(FKeyPad.ReadOut.value) / 100) * parseFloat(Accum);
+}
+// End -->
+</script>
+          </font>
+</td>
+        </tr>
+       </table>
+       <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#FFCC00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+       <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF">
+       Todos
+       os
+       direitos
+       reservados
+       Copyright
+       &copy;2005
+       OANB.</font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#FFCC00">&nbsp;
+       </font><a href="mailto:lanafabricio@ig.com.br" target="_blank"><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#FFCC00">Webdesigner
+       Lana
+       Fabrício</font></a><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#FFCC00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href="http://jcl.infocomp.vila.bol.com.br" target="_blank"><img border="0" src="bot_peq.gif" width="17" height="16"></a></font></div>
+    </TD>
+  </TR>
+</TABLE>
+</BODY></HTML>

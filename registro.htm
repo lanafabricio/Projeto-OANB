@@ -1,0 +1,435 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>*** OANB - Registro ***</title>
+<script language="JavaScript1.2">
+
+
+<!--
+/*
+This header must remain in place
+
+Applies to Security aspect of script only
+Title: Password Protection
+http://www.plebius.org/javascripts/
+Copyright 1999 All Rights Reserved.
+http://www.plebius.org/copy.shtml
+Owner: Plebius Industries
+http://www.plebius.org
+Author: Martin Kretzmann
+scripts@plebius.org
+License: GNU General Public License
+http://www.plebius.org/scripts/license.html
+ */
+
+
+var GrantedURL = 'http://hist_africa.html';
+var DeniedURL  = 'http://senha_incor.html';
+
+
+var jim;
+var gotoit;
+suzy="0"
+var capable;
+var name = navigator.appName.toLowerCase();
+var vers = parseFloat(navigator.appVersion);
+
+if ((name.indexOf("netscape") >= 0 && vers >= 4) || (name.indexOf("microsoft") >= 0 && vers >= 4))
+  capable = true;
+else
+  capable = false;
+
+// Constants.
+
+var FLDSEP;    // Special characters used as separators in cookie data string.
+var IDXSEP;
+
+if (capable) {
+  FLDSEP = String.fromCharCode(1);
+  IDXSEP = String.fromCharCode(2);
+}
+
+//----------------------------------------------------------------------------
+// Stores data currently entered on a form as cookies. Always returns true.
+//
+//   name    - The form name.
+//   months    - Number of months to keep the cookies.
+//   exclude - A comma-delimited list of field names that should not be
+//             stored. Use to exclude sensitive data such as password,
+//             credit card numbers, etc.
+//---------------------------------------------------------------------------- 
+
+function storeData(name, months, exclude) {
+
+  var f;
+  var expdate;
+  var list, include;
+  var i;
+  var fld;
+  var data;
+if ((document.myForm.pass.value==document.myForm.pass1.value)&&(document.jim.hiduser.value=="")&&(document.myForm.pass.value!="")){
+    name="jim";
+    document.jim.hidpass.value=document.myForm.pass.value;
+    document.jim.hiduser.value=document.myForm.user.value;
+    document.jim.hidname.value=document.myForm.name.value;
+    document.jim.hidhint.value=document.myForm.hint.value;
+  if (!capable)
+    return true;
+
+  // Get the named form, skip processing if not found.
+
+  if (!(f = document.forms[name]))
+    return true;
+
+  // Initialize the data field.
+
+  // Set the expiration date.
+
+  if (months == "")
+    months = 12;
+  expdate = new Date();
+  expdate.setMonth(expdate.getMonth() + months);
+
+  // Build a list of field names for exclusion.
+
+  list = new Array();
+  if (exclude != "") {
+    i = 0;
+    while ((i = exclude.indexOf(",")) >= 1) {
+      list[list.length] = exclude.substr(0, i);
+      exclude = exclude.substr(i + 1)
+    }
+    list[list.length] = exclude;
+  }
+
+  // Run through the fields and add field name/value pairs to the data string.
+
+  data = FLDSEP;
+  for (i = 0; i < f.length; i++) {
+    fld = f.elements[i];
+
+    // Is field in exclusion list?
+
+    include = true;
+    for (j = 0; j < list.length; j++)
+      if (fld.name == list[j])
+        include = false;
+
+      if (include) {
+
+      // Checkboxes and radio buttons.
+
+      if ((fld.type == "checkbox" || fld.type == "radio") && fld.checked)
+        data += setData(fld.name, fld.value);
+
+      // Selection lists (single).
+
+      if (fld.type == "select-one")
+        if (fld.selectedIndex >= 0)
+          data += setData(fld.name, fld.options[fld.selectedIndex].value);
+
+      // Selection lists (multiple). Add a unique name/value pair for each selected item.
+
+      if (fld.type == "select-multiple")
+        for (j = 0; j < fld.options.length; j++)
+          if (fld.options[j].selected)
+            data += setData(fld.name + IDXSEP + j, fld.options[j].value);
+
+      // Text fields.
+
+      if (fld.type == "hidden" || fld.type == "password" || fld.type == "text" || fld.type == "textarea")
+        data += setData(fld.name, fld.value);
+    }
+  }
+
+  // Set the cookie.
+
+  deleteCookie(name);
+  setCookie(name, data, expdate);
+  alert("user "+document.jim.hiduser.value+" has been added");
+
+}
+else if(document.myForm.pass.value==""||document.myForm.name.value==""||document.myForm.user.value==""||document.myForm.hint.value==""||document.myForm.pass1.value=="") 
+        alert('fill in the form loser');
+else alert("either your passwords don't match or you have registered with us before");
+  return true;
+}
+//----------------------------------------------------------------------------
+// Retrieves data from the cookie and sets the values in the corresponding
+// form fields. Returns true if data was found, false otherwise.
+//
+//   name - The form name.
+//----------------------------------------------------------------------------
+
+function retrieveData(name) {
+
+  var f;
+  var i, j;
+  var fld;
+  var s;
+  var data;
+
+  if (!capable)
+    return false;
+
+  // Get the named form, return if not found.
+
+  if (!(f = document.forms[name]))
+    return false;
+
+  // Get the cookie for this form.
+
+  data = getCookie(name);
+  if (data == "")
+    return false;
+
+  // Run through the fields and retrieve the values.
+
+  for (i = 0; i < f.elements.length; i++) {
+    fld = f.elements[i];
+
+    // Checkboxes and radio buttons.
+
+    if ((fld.type == "checkbox" || fld.type == "radio") && (s = getData(fld.name, data)) != null && fld.value == s)
+      fld.checked = true;
+
+    // Selection lists (single).
+
+    if (fld.type == "select-one" && (s = getData(fld.name, data)) != null)
+      for (j = 0; j < fld.options.length; j++)
+        if (fld.options[j].value == s)
+          fld.options[j].selected = true;
+
+    // Selection lists (multiple).
+
+    if (fld.type == "select-multiple")
+      for (j = 0; j < fld.options.length; j++)
+        if ((s = getData(fld.name + IDXSEP + j, data)) != null && fld.options[j].value == s)
+          fld.options[j].selected = true;
+
+    // Text fields.
+
+    if ((fld.type == "hidden" || fld.type == "password" || fld.type == "text" || fld.type == "textarea") && (s = getData(fld.name, data)) != null)
+      fld.value = s;
+  }
+
+  return true;
+}
+
+/*****************************************************************************
+* These functions set and retrieve the field name/value pairs stored in the  *
+* cookie.                                                                    *
+*****************************************************************************/
+
+//----------------------------------------------------------------------------
+// Given a field name and value, creates a name/value string that can be
+// appended to the cookie data. A null string is returned if the given value
+// is null.
+//----------------------------------------------------------------------------
+
+function setData(name, value) {
+
+  if (value != "")
+    return name + "=" + value + FLDSEP;
+  else
+    return "";
+}
+
+//----------------------------------------------------------------------------
+// Given a field name, this function will extract the matching value found
+// in the data string. Null is returned if no match is found.
+//----------------------------------------------------------------------------
+
+function getData(name, data) {
+
+  var i, j;
+  var s;
+
+  if (data == "")
+    return null;
+
+  s = FLDSEP + name + "=";
+  i = data.indexOf(s);
+  if (i >= 0) {
+    i += s.length;
+    j = data.indexOf(FLDSEP, i);
+    if (j >= 0)
+      return data.substr(i, j - i);
+  }
+
+  return null;
+}
+
+/*****************************************************************************
+* These are the basic functions to set, get and delete a cookie.             *
+*****************************************************************************/
+
+//----------------------------------------------------------------------------
+// Set a cookie given a name, value and expiration date.
+//----------------------------------------------------------------------------
+
+
+function setCookie (name, value, expires) {
+
+  document.cookie = name + "=" + escape(value) + "; expires=" + expires.toGMTString() +  "; path=/";
+}
+
+//----------------------------------------------------------------------------
+// Returns the value of the named cookie.
+//----------------------------------------------------------------------------
+
+function getCookie(name) {
+
+  var search;
+
+  search = name + "="
+  offset = document.cookie.indexOf(search) 
+  if (offset != -1) {
+    offset += search.length ;
+    end = document.cookie.indexOf(";", offset) ;
+    if (end == -1)
+      end = document.cookie.length;
+    return unescape(document.cookie.substring(offset, end));
+  }
+  else
+    return "";
+}
+
+//----------------------------------------------------------------------------
+// Delete the named cookie.
+//----------------------------------------------------------------------------
+
+function deleteCookie(name) {
+
+  var expdate = new Date();   
+  expdate.setMonth(expdate.getMonth() - 1);
+  setCookie(name, "", expdate);
+}
+function checkpass(){
+         var bob;
+         if (document.jim.hiduser.value==document.jim.user.value)jim=true;
+           else jim=false;
+         if (document.jim.hidpass.value==document.jim.pass.value)bob=true;
+           else bob=false;
+         if ((jim==bob)&&(jim==true)){
+         
+               alert("access granted");window.location=GrantedURL}   
+         else {
+              suzy=suzy+1;
+              if (suzy>3){
+                   alert("access denied, you will now be taken far away");
+                   window.location=DeniedURL }
+              if (suzy<=3)
+                   alert("access denied");
+}
+}
+function getit(){
+            if (document.jim.hidhint.value==""){
+           alert("i\'m sorry "+document.jim.hidname.value+" but it appears you didn\'t answer the hint when you registered");}
+           else if (document.jim.hidhint.value==document.jim.hint.value){
+              alert("your password is "+document.jim.hidpass.value+".");}
+           else {alert("nope, that's not it")}
+}
+//-->
+
+</script>
+
+</head>
+
+<body onLoad="retrieveData('jim')">
+
+<table border=0 cellpadding=8 cellspacing=0 width=550>
+<tr><td align=center colspan=2>
+<hr noshade>
+<font face="arial" size=4><b>REGISTRE-SE!</b></font>
+<hr noshade>
+</td></tr>
+<tr valign=top>
+<td bgcolor="#cccccc" width=100> </td>
+<td width=450>
+
+
+<!-- ANOTHER STEP: Set the form action to action="mailto:your email address" -->
+<form name="myForm" method=post  action="mailto:juliosouza@oi.com.br" onSubmit="storeData(this.name, 12,'user,pass,pass1,hint,name')">
+
+
+
+<hr noshade>
+
+<b>
+
+<font size=3 face="Arial Black"><u>Dados</u></font>
+
+</b>
+
+<p>
+
+<table border=0 cellpadding=2 cellspacing=0 width="406">
+
+<tr valign=bottom>
+
+ <td bgcolor="#CCCCCC" width="115"><b><font face="Arial" size=2>Seu Nome</font></b></td>
+<td width="279"><input name="name" size=38 value=""></td>
+
+</tr>
+<tr valign=bottom>
+
+ <td bgcolor="#CCCCCC" width="115"><b><font face="Arial" size=2>Nome de Usuário</font></b></td>
+<td width="279"><input name="user" size=38 value=""></td>
+
+</tr>
+
+<tr valign=bottom>
+ <td bgcolor="#CCCCCC" width="115"><b><font face="Arial" size=2>Senha</font></b></td>
+<td width="279"><input type="password" name="pass" size=38 value=""></td>
+</tr>
+<tr>
+<td bgcolor="#CCCCCC" width="115"><b><font face="Arial" size=2>Confirme a Senha</font></b></td>
+<td width="279"><input type="password" name="pass1" size=38 value=""></td>
+</tr>
+</table>
+<hr noshade>
+
+<p align="center">
+<input type="submit" value="Enviar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=reset value="Limpar">
+
+
+</form>
+
+<form name="jim" method=post>
+
+
+
+<hr noshade>
+<p align="center"><b>
+<font size=3 face="Arial Black"><u>Login</u></font></b>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 width="404">
+<tr valign=bottom>
+<td bgcolor="#CCCCCC" align="left" width="129"><b><font face="Arial" size=2>Nome de Usuário</font></b></td>
+<td colspan=3 align="left" width="263"><font face="Arial"><input name="user" size=37 value=""></font></td>
+</tr>
+
+<tr valign=bottom>
+<td bgcolor="#CCCCCC" align="left" width="129"><b><font face="Arial" size=2>Senha</font></b></td>
+<td colspan=3 align="left" width="263"><input type="password" name="pass" size=37 value=""></td>
+</tr>
+<input type="hidden" name="hiduser" value="">
+<input type="hidden" name="hidpass"  value="">
+<input type="hidden" name="hidname" value="">
+<input type="hidden" name="hidhint" value="">
+</table>
+<hr noshade>
+
+<p align="center">
+<input type="button"  value="login" onClick="checkpass()">
+
+</form>
+</table>
+</body>
+
+</html>

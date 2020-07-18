@@ -1,0 +1,208 @@
+<html>
+	<head>
+		<title>:::... OANB - Busca por Cep ...:::</title>		
+		<base href="http://www.correios.com.br"> 
+		<link rel="stylesheet" href="http://www.correios.com.br/correios.css" type="text/css">
+    <script Language="JavaScript">
+    function CriticaCampos()
+    {
+    if (document.Geral.Localidade.value == "")
+    {
+    alert("Informe o nome completo da Cidade/Município/Distrito/Povoado. Para o DF poderá ser informado o nome da Região Administrativa (Lago Sul, Lago Norte, Cruzeiro, Taguatinga, etc) !!");
+    document.Geral.Localidade.focus();
+    return (false);
+    } 
+    else
+    { 
+    var Branco = " ";
+    var Posic, Carac;
+    var Temp = document.Geral.Localidade.value.length;    
+    var Cont = 0;
+    for (var i=0; i < Temp; i++)   
+    {  
+    Carac =  document.Geral.Localidade.value.charAt (i);
+    Posic  = Branco.indexOf (Carac);   
+    if (Posic == -1)   
+    Cont++;      
+    }   
+    if (Cont <= 0)
+    {
+    alert("Informe o nome completo da Cidade/Município/Distrito/Povoado. Para o DF poderá ser informado o nome da Região Administrativa (Lago Sul, Lago Norte, Cruzeiro, Taguatinga, etc) !!");
+    document.Geral.Localidade.focus();
+    return (false);
+    }   
+    }
+    if (document.Geral.Logradouro.value == "")
+    {
+    alert("Informe o nome do logradouro");
+    document.Geral.Logradouro.focus();
+    return (false);
+    }  
+    else
+    { 
+    var Branco = " ";
+    var Posic, Carac;
+    var Temp = document.Geral.Logradouro.value.length;    
+    var Cont = 0;
+    for (var i=0; i < Temp; i++)   
+    {  
+    Carac =  document.Geral.Logradouro.value.charAt (i);
+    Posic  = Branco.indexOf (Carac);   
+    if (Posic == -1)   
+    Cont++;      
+    }   
+    if (Cont <= 0)
+    {
+    alert("Informe o nome do logradouro");
+    document.Geral.Logradouro.focus();
+    return (false);
+    }  
+    }
+    } 
+    function AjudaLogradouro()
+    {   
+       DocRemote = window.open ('http://www.correios.com.br/servicos/cep/ajuda_cep_loc_log.htm','Logradouro','scrollbars,resizable,width=300,height=400');
+    }   
+    </script>
+	</head>
+	<body>
+	<table width="762" border="0" cellspacing="0" cellpadding="0" height="103">	
+			<tr>				
+				<td bgcolor="#336699" width="733" height="85">
+                 <p align="center"><!-- INICIO DO CODIGO DA BANNER-LINK -->
+<script src="http://ads.banner-link.com.br/ads.asp?conta=91173&pg=1"></script>
+<!-- FIM DO CODIGO DA BANNER-LINK -----></td></tr>	
+			<tr>				
+				<td bgcolor="#336699" width="733" height="18"><font color="#FFFFFF">
+                 <marquee style="color: #336699; font-size: 12 pt; font-weight: bold" bgcolor="#FFCC00" width="761" height="19">:::...
+                 OANB
+                 -
+                 Ordem
+                 dos
+                 Acadêmicos
+                 Negros
+                 do
+                 Brasil
+                 ...:::</marquee>
+                 </font></td></tr></table>	
+				<!-- inicio borda -->	
+		<table width="320" border="0" cellspacing="0" cellpadding="0">	
+			<tr>				
+				<td bgcolor="#002a78">					
+					<table width="761" border="0" cellspacing="1" cellpadding="5">								
+						<tr>
+							<td bgcolor="#FFFFFF" width="745" valign="top">
+								<img src="http://www.correios.com.br/images/cep/busca_horizontal.gif" border="0">			 								
+								<hr>
+								<h1 align="center">Consulta de CEP - Localidade / Logradouro</h1>
+								<table align="center" width="300" border="0" cellspacing="0" cellpadding="0">	
+									<tr>				
+										<td bgcolor="#002a78">									
+											<table width="100%" border="0" cellspacing="1" cellpadding="5">								
+												<tr>
+													<td bgcolor="#d8e6ed">
+													  <table border="0" cellspacing="1" cellpadding="5">
+  														<form name="Geral" method="post" onSubmit="return CriticaCampos();" action="http://www.correios.com.br/servicos/cep/Resultado_Log.cfm?RequestTimeout=50" target="_blank">
+																<tr> 
+																	<td bgcolor="#d8e6ed"><b>UF:</b></td> 
+																	<td bgcolor="#d8e6ed"><b>  
+																	<select name=UF>
+																	<option value="AC">AC</option>
+																	<option value="AL">AL</option>
+																	<option value="AM">AM</option>
+																	<option value="AP">AP</option>
+																	<option value="BA">BA</option>
+																	<option value="CE">CE</option>
+																	<option value="DF">DF</option>
+																	<option value="ES">ES</option>
+																	<option value="GO">GO</option>
+																	<option value="MA">MA</option>
+																	<option value="MG">MG</option>
+																	<option value="MS">MS</option>
+																	<option value="MT">MT</option>
+																	<option value="PA">PA</option>
+																	<option value="PB">PB</option>
+																	<option value="PE">PE</option>
+																	<option value="PI">PI</option>
+																	<option value="PR">PR</option>
+																	<option value="RJ">RJ</option>
+																	<option value="RN">RN</option>
+																	<option value="RO">RO</option>
+																	<option value="RR">RR</option>
+																	<option value="RS">RS</option>
+																	<option value="SC">SC</option>
+																	<option value="SE">SE</option>
+																	<option value="SP">SP</option>
+																	<option value="TO">TO</option>
+																	</select>
+																	</b>
+                                  									</td>														
+																</tr> 	
+																<tr>
+																	<td bgcolor="#d8e6ed"><b>Localidade:</b></td> 
+																	<td bgcolor="#d8e6ed"><input align=left maxLength=40 name=Localidade size=32 ></td>
+																</tr>														
+																<tr> 
+																	<td bgcolor="#d8e6ed"><b>Tipo:</b><br>
+																	<td bgcolor="#d8e6ed"><b>
+																	<select name=Tipo size="1" >
+																	<option value=""></option>
+																	<option value="Avenida">Avenida</option>
+																	<option value="Bloco">Bloco</option>
+																	<option value="Praça">Praça</option>
+																	<option value="Quadra">Quadra</option>
+																	<option value="Rua" selected>Rua</option>
+																	<option value="Outros">Outros</option>
+																	</select>
+                                                                     </b>
+																	</td>
+																</tr>
+																<tr>	
+																	<td><b>Logradouro:</b></td>
+																	<td><input align=left maxLength=60 name=Logradouro size=32 onKeypress="if ((event.keyCode > 32 && event.keyCode < 40) || (event.keyCode > 41 && event.keyCode < 48) || (event.keyCode > 57 && event.keyCode < 65) || (event.keyCode > 90 && event.keyCode < 97)) event.returnValue = false;"></td>
+																</tr>
+																<tr>
+																	<td><b>Nº/Lote/Apto/Casa:</b></td>
+																	<td><input align=left maxlength=5 name=Numero size=5></td>
+																</tr>
+																<tr>
+																	<td colspan="2">
+																	<a href="http://www.correios.com.br/servicos/cep/dne.cfm"><img src="http://www.correios.com.br/images/cep/dne_azul_p.gif" align="right" border="0"></a>
+      																<input type="Submit" value="Ok" style="background-color: #FFCA00;">
+      																<input type="Button" value=" ? " style="background-color: #FFCA00;" onclick="AjudaLogradouro()">
+			      													<a onclick="AjudaLogradouro()"><b> Ajuda</b></a>
+                                  									</td>
+																</tr>
+  															</form>			
+														</table>
+													</td>
+												</tr>
+											</table>									
+										</td>
+									</tr>
+								</table>														
+							</td>				
+						</tr>			
+					</table>			
+				</td>				
+			</tr>			
+		</table>								
+    <p align="center"><b><font size="3">Você
+    tem o
+    CEP e
+    não
+    sabe o
+    endereço?
+    <a href="busca_por_cep.htm">
+    Clique
+    Aqui</a>.</font></b></p>
+    <p align="center"><b><font size="2" color="#C0C0C0">©OANB
+    2004-2005.&nbsp;</font></b>
+    <br><b><font size="2" color="#C0C0C0">Desenvolvido
+    por
+    </font> <a href="http://jcl.falai.net" target="_blank"><font size="2" color="#800000">JCL
+    Designers
+    </font></a>
+    </b></p>
+	</body>
+</html>

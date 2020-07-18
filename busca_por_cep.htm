@@ -1,0 +1,174 @@
+
+<html>
+	<head>
+		<title>:::...
+        OANB
+        -
+        Consulta
+        por
+        Cep
+        ...:::</title>		
+		<base href="http://www.correios.com.br"> 
+		<link rel="stylesheet" href="http://www.correios.com.br/correios.css" type="text/css">
+   <script Language="JavaScript">
+function CriticaCampos()
+{
+  if (document.Geral.CEP.value == "")
+  {
+    alert("Informe no mínimo os 5(cinco) primeiros dígitos do CEP. Ex. 70001");
+    document.Geral.CEP.focus();
+    return (false);
+  }
+
+  if (document.Geral.CEP.value.length <= 4)
+  {
+   	alert("Informe no mínimo os 5(cinco) primeiros dígitos do CEP. Ex. 70001");
+   	document.Geral.CEP.focus();
+   	return (false);
+  }  
+
+  { 
+   var Numeros = "0123456789";
+   var Posic, Carac;
+   var Temp = document.Geral.CEP.value.length;    
+   var Cont = 0;
+   for (var i=0; i < Temp; i++)   
+   {  
+   Carac =  document.Geral.CEP.value.charAt (i);
+   Posic  = Numeros.indexOf (Carac);   
+   if (Posic > -1)   
+	  Cont++;      
+   }   
+   if (Cont == 9)
+   {
+    	alert("O CEP tem no máximo 8(oito) digitos numéricos. Ex. 70001-970");
+    	document.Geral.CEP.focus();
+    	return (false);
+   } 
+ }
+  { 
+   var Numeros = "0123456789-";
+   var Posic, Carac;
+   var Temp = document.Geral.CEP.value.length;    
+   var Cont = 0;
+   for (var i=0; i < Temp; i++)   
+   {  
+   Carac =  document.Geral.CEP.value.charAt (i);
+   Posic  = Numeros.indexOf (Carac);   
+   if (Posic == -1)   
+      {	  
+    	alert("Informe um CEP válido. Ex. 70001-970");
+    	document.Geral.CEP.focus();
+    	return (false);
+      }
+   }   
+ }
+}    
+</script> 
+<script language="javascript">
+	function MascaraCEP (formato, keypress, objeto)
+	{
+	campo = eval (objeto);
+	if (formato=='CEP')
+		{
+		caracteres = '01234567890';
+		separacoes = 1;
+		separacao1 = '-';
+		conjuntos = 2;
+		conjunto1 = 5;
+		conjunto2 = 3;
+		if ((caracteres.search(String.fromCharCode (keypress))!=-1) && campo.value.length < 
+		(conjunto1 + conjunto2 + 1))
+			{
+			if (campo.value.length == conjunto1) 
+			   campo.value = campo.value + separacao1;
+			}
+		else 
+			event.returnValue = false;
+		}
+	}
+</script>
+<script Language="JavaScript"> 
+ function AjudaporCEP()
+ {   
+   DocRemote = window.open ('http://www.correios.com.br/servicos/cep/ajuda_cep.htm','CEP','scrollbars,resizable,width=320,height=200');  	   
+ }    
+</script>
+	</head>
+	<body>
+	<table width="740" height="72">
+    <tr>
+     <td bgcolor="#FFFFFF" width="99" rowspan="2" height="68">&nbsp;</td>				
+				<td bgcolor="#336699" width="935" height="78">
+                 <p align="center"><!-- INICIO DO CODIGO DA BANNER-LINK -->
+<script src="http://ads.banner-link.com.br/ads.asp?conta=91173&pg=1"></script>
+<!-- FIM DO CODIGO DA BANNER-LINK -----></td>
+    </tr>
+	<tr>
+	<td width="758" height="1"><font color="#FFFFFF">
+                 <marquee style="color: #336699; font-size: 12 pt; font-weight: bold" bgcolor="#FFCC00" width="741" height="19">:::...
+                 OANB
+                 -
+                 Ordem
+                 dos
+                 Acadêmicos
+                 Negros
+                 do
+                 Brasil
+                 ...:::</marquee>
+                 </font></td></tr></table>			
+		<!-- inicio borda -->	
+		<table width="320" border="0" cellspacing="0" cellpadding="0">	
+			<tr>				
+				<td bgcolor="#002a78">					
+					<table width="754" border="0" cellspacing="1" cellpadding="5">								
+						<tr>
+							<td bgcolor="#FFFFFF" width="738">
+								<img src="http://www.correios.com.br/images/cep/busca_horizontal.gif" border="0">		 								
+								<hr>
+								<h1 align="center">Consulta por CEP</h1>
+								<table align="center" width="300" border="0" cellspacing="0" cellpadding="0">	
+									<tr>				
+										<td bgcolor="#002a78">									
+											<table width="100%" border="0" cellspacing="1" cellpadding="5">								
+												<tr>
+													<td bgcolor="#d8e6ed">
+													  <table width="100%" border="0" cellspacing="1" cellpadding="5">
+  														<form name="Geral" method="post" onSubmit="return CriticaCampos();" action="http://www.correios.com.br/servicos/cep/cep_resp_pesq.cfm?RequestTimeout=50" target="_blank">
+															<tr>
+						    									<td><b>CEP:&nbsp;&nbsp;&nbsp;</b></td>
+						    								</tr>
+															<tr>
+						    									<td><INPUT align=left maxLength=9 name=CEP size=12 onKeyPress="MascaraCEP('CEP', window.event.keyCode, 'document.Geral.CEP');"></td>
+															</tr>															
+															<tr>
+																<td colspan="2">
+																	<a href="http://www.correios.com.br/servicos/cep/dne.cfm"><img src="http://www.correios.com.br/images/cep/dne_azul_p.gif" align="right" border="0"></a>				
+      																<input type="Submit" value="Ok" style="background-color: #FFCA00;">
+      																<input type="Button" value=" ? " style="background-color: #FFCA00;" onclick="AjudaporCEP()">
+			      													<a onclick="AjudaporCEP()"><b> Ajuda</b></a>
+                                 								 </td>
+															</tr>
+  														</form>			
+														</table>																											
+													</td>
+												</tr>
+											</table>									
+										</td>
+									</tr>
+								</table>														
+							</td>				
+						</tr>			
+					</table>			
+				</td>				
+			</tr>			
+		</table>								
+    <p align="center"><b><font size="2" color="#C0C0C0">©OANB
+    2004-2005.&nbsp;</font></b>
+    <br><font size="2" color="#C0C0C0"><b>Desenvolvido
+    por <a href="http://jcl.falai.net" target="_blank">JCL
+    Designers</a>
+    </b></font></p>
+	</body>
+</html>
+

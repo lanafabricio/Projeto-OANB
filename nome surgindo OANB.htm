@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Nova
+pagina 1</title>
+</head>
+<body>
+
+<h2 align="center"><span id="fly"></span></h2>
+<script>
+window.onerror=new Function("return true")
+
+//Flying Letters script- by Matthias (info@bestjavascripts.com)
+//For this script and more, visit http://www.dynamicdrive.com
+
+//Configure message to display. Use "$" for linebreak
+message = "OANB - Ordem dos Acadêmicos Negros do Brasil" // $ = taking a new line
+distance = 100 // pixel(s)
+speed = 100 // milliseconds
+
+if (!document.all)
+document.write('<h2>'+message+'</h2>')
+
+</script>
+
+<script language="JavaScript1.2">
+
+txt="";num=0;num4=0;flyofle="";flyofwi="";flyofto=""
+function stfly(){for(i=0;i != message.length;i++){if(message.charAt(i) != "$"){txt=txt+"<span style='position:relative;visibility:hidden;' id='n"+i+"'>"+message.charAt(i)+"<\/span>"};else{txt=txt+"<br>"}};fly.innerHTML=txt;txt="";flyofle=fly.offsetLeft;flyofwi=fly.offsetWidth;flyofto=fly.offsetTop;fly2b()}
+function fly2b(){if(num4 != message.length){if(message.charAt(num4) != "$"){eval("n"+num4+".style.left=flyofle-n"+num4+".offsetLeft+flyofwi/2");eval("n"+num4+".style.top=flyofto-n"+num4+".offsetTop+distance");eval("fly3('n"+num4+"',eval(n"+num4+".style.left.substring(0,n"+num4+".style.left.length-2)),(eval(n"+num4+".style.left.substring(0,n"+num4+".style.left.length-2))/5),eval(n"+num4+".style.top.substring(0,n"+num4+".style.top.length-2)),(eval(n"+num4+".style.top.substring(0,n"+num4+".style.top.length-2))/5))")};num4++;setTimeout("fly2b()",speed)}}
+function fly3(target,lef2,num2,top2,num3){if((Math.floor(top2) != 0 && Math.floor(top2) != -1) || (Math.floor(lef2) != 0 && Math.floor(lef2) != -1)){if(eval("'"+lef2+"'").charAt(0) != '-'){lef2=lef2-num2};else{lef2=lef2+(-num2)};if(Math.floor(lef2) != -1){eval(target+".style.visibility='visible';"+target+".style.left=Math.floor(lef2)")};else{eval(target+".style.visibility='visible';"+target+".style.left=Math.floor(lef2+1)")};if(eval("'"+lef2+"'").charAt(0) != '-'){top2=top2-num3};else{top2=top2+(-num3)};if(Math.floor(top2) != -1){eval(target+".style.top=Math.floor(top2)")};else{eval(target+".style.top=Math.floor(top2+1)")};setTimeout("fly3('"+target+"',"+lef2+","+num2+","+top2+","+num3+")",50)}};
+
+stfly()
+
+</script>
+
+</body>
+
+</html>
